@@ -35,8 +35,10 @@ nav {
     font-family: Arial, sans-serif;
     /* margin: 20px; */
     background-image: url('904448.jpg');
+    color: #ffffff;
+
   }
-  
+ 
   h1 {
     margin-bottom: 20px;
     color: #ffffff
@@ -74,7 +76,19 @@ nav {
   h2 {
     margin-top: 30px;
   }
-  
+#info {
+    color: #ffffff;
+    font-size: 50px;
+    margin-top: 200;
+    margin-left: 50;
+  }
+  #textbox{
+    color: #ffffff;
+    margin-left: 50px;
+  }
+  #title { 
+font-size: 30px;
+  }
   #report,#result {
     padding: 10px;
     max-width: 400px;
