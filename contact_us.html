@@ -20,15 +20,16 @@
     <div id="contactTitle">Contact Us
     </div>
     <div id="formsArea">
-        Name<br/>
-    <input type="text" class="inputSt"><br/>
-    Email<br/>
-    <input type="text" class="inputSt"><br/>
-    Message<br/>
-    <textarea id="textArea" class="inputSt"></textarea>
-   
-    <button id="submitBtn" onclick="clickSubmit()">Submit</button>
-</div>
+        <form >
+            <label for="name">Name</label><br>
+            <input type="text"  class="inputSt" id="name" name="name" ><br>
+            <label for="email">Email</label><br>
+            <input type="text"  class="inputSt" id="email" name="email"><br>
+            <label for="message">Message</label><br>
+            <textarea id="textArea" name="message" class="inputSt"></textarea>
+            <input type="submit" value="Submit" id="submitBtn" onclick="clickSubmit()">
+        </form> 
+    </div>
 </div>
 </body>
 </html>
