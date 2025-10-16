@@ -2,30 +2,38 @@ function clickSubmit(){
 
     console.log("submit");
 }
-
+let travelData=[];
 function searchCondition() {
     const input = document.getElementById('conditionInput').value.toLowerCase();
     const resultDiv = document.getElementById('result');
     resultDiv.innerHTML = '';
 
-    fetch('travel_recommendation.json')
+    fetch('./travel_recommendation_api.json')
       .then(response => response.json())
       .then(data => {
-        const condition = data.conditions.find(item => item.name.toLowerCase() === input);
+        data.countries.map(item=>{
+            travelData = travelData.concat(item.cities);
+        });
+        travelData=[...travelData, ...data.beaches,...data.temples];
+        console.log(travelData);
+       const condition = travelData.filter(item => item.description.toLowerCase().includes(input));
 
-        if (condition) {
-          const symptoms = condition.symptoms.join(', ');
-          const prevention = condition.prevention.join(', ');
-          const treatment = condition.treatment;
+       console.log(condition)
+        if (condition.length > 0) {
+            condition.map(res => {
+                const name = res.name;
+                const description = res.description;
+      
+                resultDiv.innerHTML += `<h2>${name}</h2>`;
+                resultDiv.innerHTML += `<img src="${res.imageUrl}" alt="hjh">`;
+      
+                resultDiv.innerHTML += `<p>${description}</p>`;
+               
 
-          resultDiv.innerHTML += `<h2>${condition.name}</h2>`;
-          resultDiv.innerHTML += `<img src="${condition.imagesrc}" alt="hjh">`;
-
-          resultDiv.innerHTML += `<p><strong>Symptoms:</strong> ${symptoms}</p>`;
-          resultDiv.innerHTML += `<p><strong>Prevention:</strong> ${prevention}</p>`;
-          resultDiv.innerHTML += `<p><strong>Treatment:</strong> ${treatment}</p>`;
+            })
+          
         } else {
-          resultDiv.innerHTML = 'Condition not found.';
+          resultDiv.innerHTML = 'Search result not found.';
         }
       })
       .catch(error => {
