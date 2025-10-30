@@ -15,10 +15,8 @@ function searchCondition() {
             travelData = travelData.concat(item.cities);
         });
         travelData=[...travelData, ...data.beaches,...data.temples];
-        console.log(travelData);
        const condition = travelData.filter(item => item.description.toLowerCase().includes(input));
 
-       console.log(condition)
         if (condition.length > 0) {
             condition.map(res => {
                 const name = res.name;
@@ -41,3 +39,11 @@ function searchCondition() {
         resultDiv.innerHTML = 'An error occurred while fetching data.';
       });
   }
+
+  function clearResult() {
+    const resultDiv = document.getElementById('result');
+    document.getElementById('conditionInput').value="";
+
+    resultDiv.innerHTML ="";
+}
+
